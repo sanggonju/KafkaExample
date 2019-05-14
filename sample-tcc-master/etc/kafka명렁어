@@ -1,0 +1,28 @@
+<<실행>>
+cd c:\kafka
+
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+cd c:\kafka
+
+bin\windows\kafka-server-start.bat config\server.properties
+
+
+<<토픽생성>>
+bin\windows\kafka-topics.bat --create --zookeeper DESKTOP-3VIE7PS:2181 --replication-factor 1 --partitions 1 --topic save1
+
+bin\windows\kafka-topics.bat --create --zookeeper DESKTOP-3VIE7PS:2181 --replication-factor 1 --partitions 1 --topic save2
+
+
+<<토픽삭제>>
+bin\windows\kafka-topics.bat --delete --zookeeper DESKTOP-3VIE7PS:2181 --topic test
+
+<<토픽 리스트 확인>>
+bin\windows\kafka-topics.bat --list --zookeeper DESKTOP-3VIE7PS:2181
+
+<<console consumer>>
+bin\windows\kafka-console-consumer.bat --bootstrap-server DESKTOP-3VIE7PS:9092 --topic save1 --from-beginning
+
+
+
+zookeeper와 kafka setting 파일을 첨부해 놓음.
